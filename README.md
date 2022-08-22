@@ -84,26 +84,26 @@ sudo systemctl restart chronyd.service
 ### Cabal, GHC install
 sudo apt-get install git jq bc make automake rsync htop curl build-essential pkg-config libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev make g++ wget libncursesw5 libtool autoconf openssl-devel liblmdb-dev -y   
 
-mkdir $HOME/git
-cd $HOME/git
-git clone https://github.com/input-output-hk/libsodium
-cd libsodium
-git checkout 66f017f1
-./autogen.sh
-./configure
-make
-sudo make install
+mkdir $HOME/git   
+cd $HOME/git   
+git clone https://github.com/input-output-hk/libsodium   
+cd libsodium   
+git checkout 66f017f1   
+./autogen.sh   
+./configure   
+make   
+sudo make install   
 
-cd $HOME/git
-git clone https://github.com/bitcoin-core/secp256k1
-cd secp256k1
-git checkout ac83be33
-./autogen.sh
-./configure --enable-module-schnorrsig --enable-experimental
-make
-make check
-sudo make install
-sudo ldconfig
+cd $HOME/git   
+git clone https://github.com/bitcoin-core/secp256k1   
+cd secp256k1   
+git checkout ac83be33   
+./autogen.sh   
+./configure --enable-module-schnorrsig --enable-experimental   
+make   
+make check   
+sudo make install   
+sudo ldconfig   
 
 sudo apt-get -y install pkg-config libgmp-dev libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev build-essential curl libgmp-dev libffi-dev libncurses-dev libtinfo5   
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh   
@@ -119,12 +119,12 @@ ghcup set cabal 3.6.2.0
 ghcup install ghc 8.10.7
 ghcup set ghc 8.10.7
 
-echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-echo export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" >> $HOME/.bashrc
-echo export NODE_HOME=$HOME/cardano-my-node >> $HOME/.bashrc
-echo export NODE_CONFIG=mainnet>> $HOME/.bashrc
-source $HOME/.bashrc
-
+echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc   
+echo export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" >> $HOME/.bashrc   
+echo export NODE_HOME=$HOME/cardano-my-node >> $HOME/.bashrc   
+echo export NODE_CONFIG=mainnet>> $HOME/.bashrc   
+source $HOME/.bashrc   
+ 
 cabal update
 cabal --version
 ghc --version
